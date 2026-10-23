@@ -9,10 +9,27 @@ import SwiftUI
 
 @main
 struct ThisWeek_PracticeApp: App {
+    @State private var isLoggedIn = false
+    @State private var showLogin = true
+    
     var body: some Scene {
         WindowGroup {
-            MainView()
-                .tint(.pink)
+            if isLoggedIn {
+                MainView()
+                    .tint(.pink)
+            } else {
+                if showLogin {
+                    LoginView(
+                        isLoggedIn: $isLoggedIn,
+                        showLogin: $showLogin
+                    )
+                } else {
+                    RegisterView(
+                        isLoggedIn: $isLoggedIn,
+                        showLogin: $showLogin
+                    )
+                }
+            }
         }
     }
 }

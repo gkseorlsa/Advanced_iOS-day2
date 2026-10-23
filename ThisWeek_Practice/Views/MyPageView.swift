@@ -12,7 +12,7 @@ struct MyPageView: View {
         id: 1,
         nickname: "홍길동",
         age: 20,
-        gender: "MALE",
+        gender: .male,
         mbti: "ENFP",
         job: "학생",
         hobby: "코딩",
@@ -58,7 +58,7 @@ struct MyPageView: View {
                 
                 // 정보 카드
                 VStack(spacing: 0) {
-                    infoRow(icon: "person.fill", label: "성별", value: user.gender)
+                    infoRow(icon: "person.fill", label: "성별", value: user.gender.label)
                     Divider()
                     infoRow(icon: "briefcase", label: "직업", value: user.job)
                     Divider()

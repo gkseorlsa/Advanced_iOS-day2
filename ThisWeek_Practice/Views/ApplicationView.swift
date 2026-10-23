@@ -26,6 +26,22 @@ struct ApplicationView: View {
             
             // 요일 선택
             VStack(alignment: .leading, spacing: 8) {
+                Text("만남 요일")
+                    .font(.subheadline)
+                HStack(spacing: 12) {
+                    ForEach(MeetDay.allCases, id: \.self) { day in
+                        selectButton(
+                            title: day.label,
+                            isSelected: selectedDay == day
+                        ) {
+                            selectedDay = day
+                        }
+                    }
+                }
+            }
+            
+            // 지역 선택
+            VStack(alignment: .leading, spacing: 8) {
                 Text("만남 지역")
                     .font(.subheadline)
                 LazyVGrid(columns: [
@@ -43,7 +59,7 @@ struct ApplicationView: View {
                 }
             }
             
-            // 지역 선택
+            // 신청 버튼
             Button {
                 hasApplied = true
             } label: {
@@ -55,8 +71,6 @@ struct ApplicationView: View {
                     .foregroundColor(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
-            
-            // 신청 버튼
             
             Spacer()
         }
